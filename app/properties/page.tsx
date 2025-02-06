@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import InnerBanner from "../components/Banner";
-import PropertyList from "./PropertyList";
+import PropertyList from "./propertylist";
 import Filter from "./filter";
 import { Property } from "./types";
 
