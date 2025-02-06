@@ -4,30 +4,24 @@ import { useEffect, useState } from "react";
 import InnerBanner from "../components/Banner";
 import PropertyList from "./PropertyList";
 import Filter from "./filter";
-
-interface Property {
-  id: number;
-  image: string;
-  address: string;
-  name: string;
-  bedrooms: number;
-  size: string;
-  price: number;
-  added: string;
-}
+import { Property } from "./types";
 
 const PropertiesPage: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/properties")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to fetch properties");
+        return response.json();
+      })
       .then((data) => {
         setProperties(data);
         setFilteredProperties(data);
       })
-      .catch((error) => console.error("Error fetching properties:", error));
+      .catch((error) => setError(error.message));
   }, []);
 
   return (
@@ -40,7 +34,13 @@ const PropertiesPage: React.FC = () => {
             <Filter setFilteredProperties={setFilteredProperties} />
           </div>
           <div className="flex flex-wrap -mx-4">
-            <PropertyList properties={filteredProperties} />
+            {error && <p className="text-red-500">{error}</p>}
+
+            {filteredProperties.length === 0 ? (
+              <p className="text-gray-500">No properties found.</p>
+            ) : (
+              <PropertyList properties={filteredProperties} />
+            )}
           </div>
         </div>
       </section>

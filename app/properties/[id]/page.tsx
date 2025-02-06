@@ -4,18 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Property {
-  id: number;
-  image: string;
-  address: string;
-  name: string;
-  bedrooms: number;
-  size: string;
-  added: string;
-  price: number;
-  description: string;
-}
+import { Property } from "../types";
 
 const PropertyDetail = () => {
   const { id } = useParams();

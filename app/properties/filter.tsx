@@ -2,17 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-
-interface Property {
-  id: number;
-  image: string;
-  address: string;
-  name: string;
-  bedrooms: number;
-  size: string;
-  price: number;
-  added: string;
-}
+import { Property } from "./types";
 
 interface FilterProps {
   setFilteredProperties: (props: Property[]) => void;

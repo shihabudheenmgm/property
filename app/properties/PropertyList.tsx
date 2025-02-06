@@ -2,17 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-interface Property {
-  id: number;
-  image: string;
-  address: string;
-  name: string;
-  bedrooms: number;
-  size: string;
-  added: string;
-  price: number;
-}
+import { Property } from "./types";
 
 interface PropertyListProps {
   properties: Property[];
