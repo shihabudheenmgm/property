@@ -92,7 +92,7 @@ const Filter: React.FC<FilterProps> = ({ setFilteredProperties }) => {
     });
 
     setFilteredProperties(filtered);
-  }, [filter, sort, setFilteredProperties]);
+  }, [filter, sort, properties, setFilteredProperties]);
 
   // Reset Filter
   const resetFilter = () => {
