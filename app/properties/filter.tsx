@@ -23,7 +23,7 @@ const Filter: React.FC<FilterProps> = ({ setFilteredProperties }) => {
       .then((response) => response.json())
       .then((data) => setProperties(data))
       .catch((error) => console.error("Error loading properties:", error));
-  }, []);
+  }, [properties]);
 
   const [showPriceDropdown, setShowPriceDropdown] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);

@@ -10,7 +10,7 @@ export async function GET() {
     const properties = JSON.parse(jsonData);
 
     return NextResponse.json(properties); // Return JSON response
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to load properties" },
       { status: 500 }

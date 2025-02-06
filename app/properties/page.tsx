@@ -7,7 +7,6 @@ import Filter from "./filter";
 import { Property } from "./types";
 
 const PropertiesPage: React.FC = () => {
-  const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -18,7 +17,6 @@ const PropertiesPage: React.FC = () => {
         return response.json();
       })
       .then((data) => {
-        setProperties(data);
         setFilteredProperties(data);
       })
       .catch((error) => setError(error.message));
@@ -34,10 +32,16 @@ const PropertiesPage: React.FC = () => {
             <Filter setFilteredProperties={setFilteredProperties} />
           </div>
           <div className="flex flex-wrap -mx-4">
-            {error && <p className="text-red-500">{error}</p>}
+            {error && (
+              <p className="text-red-500 text-center mx-auto mt-6 text-base w-full">
+                {error}
+              </p>
+            )}
 
             {filteredProperties.length === 0 ? (
-              <p className="text-gray-500">No properties found.</p>
+              <p className="text-gray-500 text-center mx-auto mt-6 text-base">
+                No properties found.
+              </p>
             ) : (
               <PropertyList properties={filteredProperties} />
             )}
