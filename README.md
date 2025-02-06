@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 # property
+
 =======
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -16,4 +16,3 @@ pnpm dev
 # or
 bun dev
 ```
->>>>>>> 1e51ce7 (Initial commit of next js project)
